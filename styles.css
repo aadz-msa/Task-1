@@ -1,0 +1,471 @@
+/* ===== RESET & GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ===== NAVIGATION BAR ===== */
+.navbar {
+    /* Fixed positioning at the top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    
+    /* Initial styling */
+    background-color: rgba(255, 255, 255, 0.95);
+    height: 80px;
+    
+    /* Smooth transitions for all property changes */
+    transition: all 0.3s ease;
+    
+    /* Optional: Add subtle border */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Scrolled state styling - Applied via JavaScript */
+.navbar.scrolled {
+    background-color: rgba(44, 62, 80, 0.98);
+    height: 60px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation container for centering content */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+/* ===== LOGO/BRAND ===== */
+.logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar.scrolled .logo a {
+    color: #fff;
+}
+
+/* ===== NAVIGATION MENU ===== */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    display: block;
+    position: relative;
+    
+    /* Smooth transitions for hover effects */
+    transition: all 0.3s ease;
+}
+
+/* Change link color in scrolled state */
+.navbar.scrolled .nav-link {
+    color: #ecf0f1;
+}
+
+/* ===== HOVER EFFECTS ===== */
+/* Background color change on hover */
+.nav-link:hover {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Underline animation effect */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Override underline in scrolled state */
+.navbar.scrolled .nav-link::after {
+    background-color: #fff;
+}
+
+/* ===== MAIN CONTENT SECTIONS ===== */
+main {
+    /* Add padding to prevent content from being hidden under fixed navbar */
+    padding-top: 80px;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+/* Alternating background colors for visual separation */
+.section:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.section:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.section h1,
+.section h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.section h1 {
+    font-size: 3rem;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+}
+
+.section p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 600px;
+}
+
+/* ===== CONTENT STYLING ===== */
+.content-box {
+    max-width: 1000px;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.content-box h3 {
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.content-box p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Feature Items (Home Section) */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-item h4 {
+    color: #3498db;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.feature-item p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Values List (About Section) */
+.values-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.values-list li {
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-left: 4px solid #3498db;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.values-list strong {
+    color: #2c3e50;
+}
+
+/* Services Grid (Services Section) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    color: #3498db;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.service-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.service-card ul li {
+    padding: 0.5rem 0;
+    color: #7f8c8d;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.service-card ul li:before {
+    content: '✓ ';
+    color: #27ae60;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Contact Info (Contact Section) */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.contact-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h4 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.contact-item p {
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Contact Form */
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.contact-form h3 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ecf0f1;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Social Links */
+.social-links {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.social-links h3 {
+    margin-bottom: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    font-size: 2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .logo a {
+        font-size: 1.5rem;
+    }
+    
+    .section h1 {
+        font-size: 2rem;
+    }
+    
+    .section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .content-box h3 {
+        font-size: 1.5rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-menu {
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+    }
+    
+    .logo a {
+        font-size: 1.2rem;
+    }
+    
+    .section {
+        padding: 3rem 1rem;
+    }
+    
+    .content-box {
+        padding: 0 0.5rem;
+    }
+    
+    .feature-item,
+    .service-card,
+    .contact-item,
+    .contact-form {
+        padding: 1rem;
+    }
+}
