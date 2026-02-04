@@ -118,3 +118,67 @@ function updateActiveLink() {
 // Add event listener for active link highlighting
 window.addEventListener('scroll', updateActiveLink, { passive: true });
 document.addEventListener('DOMContentLoaded', updateActiveLink);
+
+
+// ===== SCROLL REVEAL ANIMATION (BONUS FEATURE) =====
+
+/**
+ * Animate elements when they come into view
+ */
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements for scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+    const animateElements = document.querySelectorAll('.feature-item, .service-card, .team-member, .content-box');
+    
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
+
+
+// ===== FORM SUBMISSION HANDLER =====
+
+/**
+ * Handle contact form submission
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.querySelector('.contact-form form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Message Sent! ✓';
+            submitBtn.style.backgroundColor = '#27ae60';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.backgroundColor = '';
+            }, 3000);
+        });
+    }
+});
